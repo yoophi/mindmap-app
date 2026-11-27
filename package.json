@@ -1,0 +1,12 @@
+{
+  "name": "mindmap-workspace",
+  "private": true,
+  "packageManager": "pnpm@9.10.0",
+  "scripts": {
+    "dev": "pnpm --filter @yoophi/mindmap-app tauri:dev",
+    "build": "pnpm --filter @yoophi/mindmap-app build",
+    "check-types": "pnpm --filter @yoophi/mindmap-app check-types",
+    "storybook": "pnpm --filter @yoophi/mindmap-app storybook",
+    "test": "cargo test --locked --workspace"
+  }
+}
