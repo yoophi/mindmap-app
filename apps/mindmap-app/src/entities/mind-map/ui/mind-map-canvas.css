@@ -1,0 +1,114 @@
+.mindmap-canvas {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  isolation: isolate;
+  color: #26372c;
+  background: #f8f6ee;
+}
+
+.mindmap-surface {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: none;
+  background-image: radial-gradient(#cfcbb8 0.8px, transparent 0.8px);
+  background-position: 10px 10px;
+  background-size: 22px 22px;
+}
+
+.mindmap-surface[data-panning="true"] { cursor: grabbing; }
+.mindmap-stage { position: absolute; top: 0; left: 0; transform-origin: top left; }
+.mindmap-edges { position: absolute; inset: 0; overflow: visible; pointer-events: none; }
+.mindmap-edges path { fill: none; stroke: var(--branch-line); stroke-width: 2; }
+.mindmap-edges [data-branch="0"], .mindmap-node[data-branch="0"] { --branch-line: #9aa786; --branch-tint: #e6ebdc; }
+.mindmap-edges [data-branch="1"], .mindmap-node[data-branch="1"] { --branch-line: #bd957c; --branch-tint: #f1e4d8; }
+.mindmap-edges [data-branch="2"], .mindmap-node[data-branch="2"] { --branch-line: #a3a1bb; --branch-tint: #e9e8ef; }
+
+.mindmap-node {
+  box-sizing: border-box;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 13px;
+  overflow: hidden;
+  border: 1px solid #dedacc;
+  border-radius: 11px;
+  background: #fffdf6;
+  color: #30372a;
+  text-align: left;
+  font: 550 14px/1.25 "Avenir Next", "Segoe UI", sans-serif;
+  box-shadow: 0 2px 3px #312d2010;
+  cursor: pointer;
+}
+
+.mindmap-node[data-root="true"] {
+  font-weight: 700;
+  background: #314638;
+  color: #fffae9;
+  border-color: #314638;
+}
+
+.mindmap-node[data-selected="true"] {
+  outline: 2px solid #78906e;
+  outline-offset: 3px;
+}
+
+.mindmap-node:focus-visible { outline: 2px solid #b1673a; outline-offset: 3px; }
+.mindmap-node:not([data-root="true"]):hover { background: var(--branch-tint); }
+.mindmap-node-dot { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--branch-line); }
+.mindmap-node[data-root="true"] .mindmap-node-dot { background: #d5bb7a; }
+.mindmap-node-title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mindmap-node input { width: 100%; padding: 0; color: inherit; background: transparent; font: inherit; border: 0; outline: none; }
+
+.mindmap-zoom {
+  position: absolute;
+  bottom: 24px;
+  right: 25px;
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  border: 1px solid #dedacd;
+  border-radius: 10px;
+  background: #fffdf6;
+  box-shadow: 0 4px 12px #51433113;
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+}
+.mindmap-zoom button { display: grid; place-items: center; width: 34px; height: 33px; color: #35483a; background: transparent; border: 0; border-radius: 6px; cursor: pointer; }
+.mindmap-zoom button:hover { background: #edece2; }
+.mindmap-zoom output { min-width: 43px; text-align: center; font-size: 12px; font-weight: 650; }
+.mindmap-zoom .mindmap-fit { margin-left: 4px; border-left: 1px solid #ebe7db; border-radius: 0 6px 6px 0; }
+
+.mindmap-node[data-dragged="true"] { opacity: .46; }
+.mindmap-node[data-drop="parent"] { outline: 2px solid #446e42; outline-offset: 3px; }
+.mindmap-node[data-drop="invalid"] { outline: 2px dashed #a04b3e; outline-offset: 3px; }
+.mindmap-insertion { position: absolute; height: 3px; border-radius: 3px; background: #538052; pointer-events: none; }
+.mindmap-drag-preview {
+  position: absolute;
+  z-index: 2;
+  max-width: 172px;
+  overflow: hidden;
+  border-radius: 7px;
+  padding: 6px 9px;
+  background: #3a5540;
+  color: #fffaf0;
+  box-shadow: 0 3px 7px #27261f30;
+  font: 650 12px/1.25 "Avenir Next", "Segoe UI", sans-serif;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.mindmap-drag-preview[data-invalid="true"] { background: #8d493d; }
+.mindmap-drag-tip {
+  position: absolute;
+  bottom: 29px;
+  left: 23px;
+  right: 215px;
+  margin: 0;
+  color: #626856;
+  font: 550 11px/1.35 "Avenir Next", "Segoe UI", sans-serif;
+  pointer-events: none;
+}
