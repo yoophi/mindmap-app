@@ -4,7 +4,7 @@ Tauri 2와 React로 만든 로컬 마인드맵 편집기 PoC입니다.
 
 ## 실행
 
-Node.js 22+, pnpm 9.10, Rust와 운영체제에 맞는 Tauri 빌드 환경이 필요합니다.
+Node.js 22.12+, pnpm 9.10, Rust와 운영체제에 맞는 Tauri 빌드 환경이 필요합니다.
 
 ```sh
 pnpm install --frozen-lockfile
